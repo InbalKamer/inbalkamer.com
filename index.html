@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inbal Kamer | Strategy & Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1a2a4a;--navy-dark:#0d1a30;--navy-mid:#2a3d5e;--gold:#c9a84c;--gold-light:#e8d5a0;--cream:#f5f2ec;--cream-dark:#ede9e1;--white:#ffffff;--text-dark:#1a2a4a;--text-mid:#4a5568;--text-light:#8a9ab5;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden}
+body.he{font-family:'Frank Ruhl Libre',serif;direction:rtl}
+body.he h1,body.he h2,body.he h3,body.he p,body.he a,body.he div,body.he span,body.he cite{font-family:'Frank Ruhl Libre',serif}
+body.he .hero-eyebrow,body.he .section-label,body.he .about-label,body.he .stat-label,body.he .lang-btn,body.he .btn-primary,body.he .btn-wa,body.he .btn-li{font-family:'Frank Ruhl Libre',serif;letter-spacing:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 4rem;display:flex;justify-content:space-between;align-items:center;background:rgba(245,242,236,0.95);backdrop-filter:blur(12px)}
+.nav-logo img{height:38px;width:auto}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links a{font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:var(--navy)}
+body.he .nav-links a{letter-spacing:0;font-size:0.95rem;text-transform:none}
+.lang-toggle{display:flex;border:1px solid rgba(26,42,74,0.2);border-radius:20px;overflow:hidden}
+.lang-btn{padding:0.3rem 0.9rem;font-size:0.75rem;font-family:'DM Sans',sans-serif;letter-spacing:0.08em;background:transparent;border:none;cursor:pointer;color:var(--text-mid);transition:all 0.2s}
+.lang-btn.active{background:var(--navy);color:var(--white)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4rem;padding-top:5rem;gap:4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:var(--navy-dark);z-index:0}
+body.he .hero::before{left:0;right:auto}
+.hero-text{position:relative;z-index:1;padding:3rem 0}
+.hero-eyebrow{font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--gold)}
+body.he .hero-eyebrow{letter-spacing:0.1em;font-size:0.9rem}
+body.he .hero-eyebrow::before{display:none}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:300;line-height:1.1;color:var(--navy);margin-bottom:1rem}
+.hero-title em{font-style:italic;color:var(--gold)}
+body.he .hero-title{font-family:'Frank Ruhl Libre',serif;font-size:3.2rem;font-weight:400;line-height:1.2}
+body.he .hero-title em{font-style:normal;font-weight:700}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--text-mid);line-height:1.7;margin-bottom:2.5rem;max-width:460px}
+body.he .hero-subtitle{font-family:'Frank Ruhl Libre',serif;font-size:1.15rem;font-weight:300}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{padding:0.9rem 2rem;background:var(--navy);color:var(--white);border:none;font-family:'DM Sans',sans-serif;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--navy-mid)}
+.btn-wa{padding:0.9rem 2rem;background:transparent;color:var(--navy);border:1px solid var(--navy);font-family:'DM Sans',sans-serif;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem}
+.btn-wa:hover{background:var(--navy);color:var(--white)}
+.btn-li{padding:0.7rem 1.4rem;background:transparent;color:var(--text-mid);border:1px solid rgba(26,42,74,0.2);font-family:'DM Sans',sans-serif;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;margin-top:1rem}
+.btn-li:hover{color:var(--navy);border-color:var(--navy)}
+.li-icon{width:15px;height:15px;fill:currentColor}
+.wa-icon{width:16px;height:16px;fill:currentColor}
+.hero-image-wrap{position:relative;z-index:1;height:100vh;display:flex;align-items:flex-end;justify-content:center}
+.hero-img{width:100%;max-width:420px;height:85vh;object-fit:cover;object-position:center top;filter:grayscale(20%)}
+.hero-tag{position:absolute;bottom:3rem;left:-2rem;background:var(--gold);padding:1.2rem 1.8rem}
+body.he .hero-tag{left:auto;right:-2rem}
+.hero-tag span{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--navy-dark);font-weight:600}
+.hero-name-he{font-family:'Frank Ruhl Libre',serif;font-size:1.2rem;font-weight:500;color:var(--navy);margin-bottom:0.8rem;display:none}
+body.he .hero-name-he{display:block}
+.marquee-strip{background:var(--navy);padding:1rem 0;overflow:hidden}
+.marquee-inner{display:flex;white-space:nowrap;animation:marquee 25s linear infinite}
+.marquee-inner span{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);padding:0 2.5rem;opacity:0.8}
+.marquee-inner span.dot{color:var(--gold);opacity:1;padding:0 0.5rem}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.about{padding:7rem 4rem;display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:center}
+.about-label{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+body.he .about-label{letter-spacing:0.05em;font-size:0.85rem}
+.about-title{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;line-height:1.2;color:var(--navy);margin-bottom:2rem}
+body.he .about-title{font-family:'Frank Ruhl Libre',serif;font-size:2.2rem;font-weight:400;line-height:1.4}
+.about-body{font-size:0.95rem;line-height:1.9;color:var(--text-mid);margin-bottom:1.5rem}
+body.he .about-body{font-size:1rem;line-height:2}
+.about-summary{font-family:'Frank Ruhl Libre',serif;font-size:1.05rem;font-weight:500;color:var(--navy);line-height:1.7;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(26,42,74,0.1)}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(26,42,74,0.1)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--navy)}
+.stat-label{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-top:0.2rem}
+body.he .stat-label{letter-spacing:0;font-size:0.85rem}
+.about-right{position:relative}
+.about-quote{background:var(--navy);padding:3rem;position:relative}
+.about-quote::before{content:'\201C';font-family:'Cormorant Garamond',serif;font-size:8rem;color:var(--gold);opacity:0.3;position:absolute;top:-1rem;left:1.5rem;line-height:1}
+body.he .about-quote::before{content:'\201D';right:1.5rem;left:auto}
+.about-quote p{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;font-style:italic;color:var(--white);line-height:1.6;position:relative;z-index:1}
+body.he .about-quote p{font-family:'Frank Ruhl Libre',serif;font-style:normal;font-weight:300;font-size:1.3rem;line-height:1.7}
+.about-quote cite{display:block;margin-top:1.5rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);font-style:normal}
+.services{padding:7rem 4rem;background:var(--cream-dark)}
+.section-header{margin-bottom:4rem}
+.section-label{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+body.he .section-label{letter-spacing:0.05em;font-size:0.85rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--navy);max-width:500px;line-height:1.2}
+body.he .section-title{font-family:'Frank Ruhl Libre',serif;font-size:2.2rem;font-weight:400;line-height:1.4}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(26,42,74,0.1)}
+.service-card{background:var(--white);padding:2.5rem 2rem;transition:all 0.3s;cursor:default;position:relative;overflow:hidden}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.4s}
+.service-card:hover::after{width:100%}
+.service-card:hover{background:var(--navy)}
+.service-card:hover .svc-num,.service-card:hover .svc-title{color:var(--white)}
+.service-card:hover .svc-desc{color:rgba(255,255,255,0.6)}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--cream-dark);line-height:1;margin-bottom:1rem;transition:all 0.3s}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--navy);margin-bottom:0.8rem;line-height:1.3;transition:color 0.3s}
+body.he .svc-title{font-family:'Frank Ruhl Libre',serif;font-size:1.2rem}
+.svc-desc{font-size:0.85rem;line-height:1.7;color:var(--text-mid);transition:color 0.3s}
+body.he .svc-desc{font-size:0.9rem;line-height:1.8}
+.why{padding:7rem 4rem;display:grid;grid-template-columns:1.2fr 1fr;gap:6rem;align-items:center}
+.why-list{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+.why-item{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem;border-left:2px solid transparent;transition:all 0.3s}
+.why-item:hover{border-left-color:var(--gold);background:rgba(201,168,76,0.04)}
+body.he .why-item{border-left:none;border-right:2px solid transparent}
+body.he .why-item:hover{border-right-color:var(--gold)}
+.why-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:0.4rem;flex-shrink:0}
+.why-text strong{font-size:0.95rem;color:var(--navy);display:block;margin-bottom:0.3rem}
+body.he .why-text strong{font-size:1rem;font-weight:500}
+.why-text p{font-size:0.85rem;color:var(--text-mid);line-height:1.6}
+body.he .why-text p{font-size:0.9rem;line-height:1.8}
+.why-image{position:relative}
+.why-img-box{background:var(--navy);padding:0.5rem}
+.why-img-box img{width:100%;display:block;filter:grayscale(30%)}
+.why-badge{position:absolute;top:-1.5rem;right:-1.5rem;background:var(--gold);width:90px;height:90px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.5rem}
+.why-badge p{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy-dark);font-weight:600;line-height:1.4}
+body.he .why-badge p{letter-spacing:0;font-size:0.7rem}
+.languages{background:var(--navy);padding:5rem 4rem;display:flex;justify-content:center;gap:8rem;align-items:center}
+.lang-item{text-align:center}
+.lang-flag{font-size:2.5rem;margin-bottom:1rem}
+.lang-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--white);font-weight:300}
+.lang-sub{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-top:0.3rem}
+.lang-divider{width:1px;height:80px;background:rgba(255,255,255,0.15)}
+.contact{padding:7rem 4rem;text-align:center;background:var(--cream-dark)}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--navy);margin-bottom:1rem}
+body.he .contact-title{font-family:'Frank Ruhl Libre',serif;font-size:2.4rem;font-weight:400}
+.contact-sub{font-size:0.95rem;color:var(--text-mid);margin-bottom:3rem;line-height:1.7}
+body.he .contact-sub{font-size:1rem;line-height:2}
+.contact-btns{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+footer{background:var(--navy-dark);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:0.78rem;color:rgba(255,255,255,0.4);letter-spacing:0.05em}
+.footer-logo img{height:28px;width:auto;filter:brightness(0) invert(1);opacity:0.7}
+body.he nav{flex-direction:row-reverse}
+[data-he]{display:none}
+[data-en]{display:block}
+body.he [data-en]{display:none}
+body.he [data-he]{display:block!important}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hero{grid-template-columns:1fr;padding:6rem 1.5rem 2rem}.hero::before{display:none}.hero-title{font-size:2.8rem}.hero-image-wrap{height:60vw}.hero-img{height:60vw}.about,.why{grid-template-columns:1fr;padding:4rem 1.5rem;gap:3rem}.services{padding:4rem 1.5rem}.services-grid{grid-template-columns:1fr}.languages{flex-direction:column;gap:3rem;padding:3rem 1.5rem}.lang-divider{display:none}.contact{padding:4rem 1.5rem}footer{flex-direction:column;gap:1rem;padding:1.5rem;text-align:center}#mobile-lang{display:flex!important}}
+</style>
+</head>
+<body class="en">
+<nav>
+  <div class="nav-logo"><img src="logo.png" alt="Inbal Kamer Strategy & Growth"></div>
+  <div class="nav-links">
+    <a href="#about" data-en>About</a>
+    <a href="#about" data-he style="display:none">קצת עלי</a>
+    <a href="#services" data-en>Services</a>
+    <a href="#services" data-he style="display:none">שירותים</a>
+    <a href="#why" data-en>Why Me</a>
+    <a href="#why" data-he style="display:none">למה אני</a>
+    <a href="#contact" data-en>Contact</a>
+    <a href="#contact" data-he style="display:none">צור קשר</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('he')">HE</button>
+    </div>
+  </div>
+  <div class="lang-toggle" id="mobile-lang" style="display:none">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('he')">HE</button>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow" data-en>Finance × Strategy × Growth</div>
+    <div class="hero-eyebrow" data-he style="display:none">פיננסים × אסטרטגיה × תוצאות</div>
+    <div class="hero-name-he">ענבל קמר</div>
+    <h1 class="hero-title" data-en>Turning numbers<br>into <em>decisions.</em></h1>
+    <h1 class="hero-title" data-he style="display:none">אסטרטגיה פיננסית.<br><em>החלטות נכונות.</em></h1>
+    <p class="hero-subtitle" data-en>I spent 13 years building other people's businesses. Now I build yours.</p>
+    <p class="hero-subtitle" data-he style="display:none">עושה סדר בכסף — כדי שהעסק שלך יוכל לגדול.</p>
+    <div class="hero-ctas">
+      <a href="mailto:inbal.kamer@gmail.com" class="btn-primary" data-en>Let's Talk</a>
+      <a href="mailto:inbal.kamer@gmail.com" class="btn-primary" data-he style="display:none">בואו נדבר</a>
+      <a href="https://wa.me/972502344483" class="btn-wa" target="_blank">
+        <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <img class="hero-img" src="photo.png" alt="Inbal Kamer">
+    <div class="hero-tag"><span>Tel Aviv, Israel</span></div>
+  </div>
+</section>
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Finance Operations</span><span class="dot">◆</span><span>Strategy & Growth</span><span class="dot">◆</span><span>Market Entry</span><span class="dot">◆</span><span>Pitch Decks</span><span class="dot">◆</span><span>Executive Writing</span><span class="dot">◆</span><span>Pricing & Profitability</span><span class="dot">◆</span><span>Hebrew Localization</span><span class="dot">◆</span><span>Business Operations</span><span class="dot">◆</span><span>Finance Operations</span><span class="dot">◆</span><span>Strategy & Growth</span><span class="dot">◆</span><span>Market Entry</span><span class="dot">◆</span><span>Pitch Decks</span><span class="dot">◆</span><span>Executive Writing</span><span class="dot">◆</span><span>Pricing & Profitability</span><span class="dot">◆</span><span>Hebrew Localization</span><span class="dot">◆</span><span>Business Operations</span><span class="dot">◆</span>
+  </div>
+</div>
+<section class="about" id="about">
+  <div>
+    <div class="about-label" data-en>About</div>
+    <div class="about-label" data-he style="display:none">קצת עלי</div>
+    <h2 class="about-title" data-en>I connect finance, operations, and strategy — so decisions actually get made.</h2>
+    <h2 class="about-title" data-he style="display:none">אני מחברת בין כסף, ניהול ואסטרטגיה כדי שהחלטות יתקבלו נכון.</h2>
+    <p class="about-body" data-en>With 13 years in finance and business operations — including leading business development for companies entering the Israeli market — and native-level Hebrew and English, I know exactly what drives a business forward and what holds it back.</p>
+    <p class="about-body" data-he style="display:none">עם 13 שנות ניסיון בפיננסים ובזירה העסקית, כולל ליווי חברות בכניסה לשוק הישראלי, אני מביאה ראייה עסקית רחבה וחיבור לעולם הגלובלי.</p>
+    <p class="about-body" data-en>Now I work directly for business owners and startups — bringing financial clarity, operational order, and executive-level decision-making in both Hebrew and native English.</p>
+    <p class="about-body" data-he style="display:none">כיום אני עובדת ישירות עם בעלי עסקים וסטארטאפים ומביאה בהירות פיננסית, סדר עסקי, ויכולת קבלת החלטות ברמת הנהלה בכירה.</p>
+    <p class="about-summary" data-he style="display:none">מוכנים לקחת את העסק לשלב הבא? בואו נדבר.</p>
+    <a href="https://www.linkedin.com/in/inbal-kamer-35a8b8111/" target="_blank" class="btn-li">
+      <svg class="li-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <span data-en>View my LinkedIn</span>
+      <span data-he style="display:none">הפרופיל שלי ב-LinkedIn</span>
+    </a>
+    <div class="about-stats">
+      <div>
+        <div class="stat-num">13+</div>
+        <div class="stat-label" data-en>Years Experience</div>
+        <div class="stat-label" data-he style="display:none">שנות ניסיון</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label" data-en>Languages, Native Level</div>
+        <div class="stat-label" data-he style="display:none">שפות ברמת שפת אם</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-quote">
+      <p data-en>"Most businesses have money — they just don't know where it's going. That's what I fix."</p>
+      <p data-he style="display:none">"ברוב העסקים יש כסף — אבל חסרה בהירות לגבי איך הוא מנוהל. כאן אני נכנסת לתמונה."</p>
+      <cite>— Inbal Kamer</cite>
+    </div>
+  </div>
+</section>
+<section class="services" id="services">
+  <div class="section-header">
+    <div class="section-label" data-en>What I Do</div>
+    <div class="section-label" data-he style="display:none">מה אני עושה</div>
+    <h2 class="section-title" data-en>Services built around your profitability.</h2>
+    <h2 class="section-title" data-he style="display:none">שירותים המותאמים לרווחיות שלך.</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="svc-num">01</div>
+      <div class="svc-title" data-en>Finance & Business Operations</div>
+      <div class="svc-title" data-he style="display:none">פיננסים ותפעול עסקי</div>
+      <div class="svc-desc" data-en>Real financial clarity — not accounting, but strategic financial management that connects your numbers to business results.</div>
+      <div class="svc-desc" data-he style="display:none">בהירות פיננסית אמיתית — לא חשבונאות, אלא ניהול פיננסי אסטרטגי שמחבר מספרים לתוצאות עסקיות.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-num">02</div>
+      <div class="svc-title" data-en>Operational Excellence</div>
+      <div class="svc-title" data-he style="display:none">מצוינות תפעולית</div>
+      <div class="svc-desc" data-en>Cross-department project management, process design, and organizational clarity. Moving from firefighting to strategy and growth.</div>
+      <div class="svc-desc" data-he style="display:none">ניהול פרויקטים חוצי מחלקות, עיצוב תהליכים ובהירות ארגונית. מעבר מ"כיבוי שריפות" לאסטרטגיה וצמיחה.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-num">03</div>
+      <div class="svc-title" data-en>Israeli Market Entry Advisory</div>
+      <div class="svc-title" data-he style="display:none">ייעוץ כניסה לשוק הישראלי</div>
+      <div class="svc-desc" data-en>Supporting foreign companies entering Israel — data-driven, culturally adapted, and profitable from day one.</div>
+      <div class="svc-desc" data-he style="display:none">תמיכה בחברות זרות בתהליך כניסה לישראל — מבוסס נתונים, מותאם תרבותית, ורווחי מהיום הראשון.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-num">04</div>
+      <div class="svc-title" data-en>Executive Writing & Pitch Decks</div>
+      <div class="svc-title" data-he style="display:none">כתיבה ניהולית ומצגות</div>
+      <div class="svc-desc" data-en>Pitch decks, investor proposals, price proposals, and executive documents — in Hebrew and native English, tailored to your audience.</div>
+      <div class="svc-desc" data-he style="display:none">מצגות, פניות למשקיעים, הצעות מחיר ומסמכים ניהוליים — בעברית ובאנגלית, בהתאמה מלאה לקהל היעד.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-num">05</div>
+      <div class="svc-title" data-en>Pricing & Profitability Review</div>
+      <div class="svc-title" data-he style="display:none">סקירת תמחור ורווחיות</div>
+      <div class="svc-desc" data-en>Are you actually making money on what you sell? A deep-dive into your cost structure, pricing model, and profit margins.</div>
+      <div class="svc-desc" data-he style="display:none">האם אתה באמת מרוויח ממה שאתה מוכר? צלילה עמוקה למבנה העלויות, מודל התמחור ושולי הרווח שלך.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-num">06</div>
+      <div class="svc-title" data-en>Hebrew Localization</div>
+      <div class="svc-title" data-he style="display:none">לוקליזציה לעברית</div>
+      <div class="svc-desc" data-en>Not just translation — cultural and business context adaptation for the Israeli market, by a native of both worlds.</div>
+      <div class="svc-desc" data-he style="display:none">לא רק תרגום — התאמת הקשר התרבותי והעסקי לשוק הישראלי, על ידי מי שחיה בשני העולמות.</div>
+    </div>
+  </div>
+</section>
+<section class="why" id="why">
+  <div>
+    <div class="section-label" data-en>Why Me</div>
+    <div class="section-label" data-he style="display:none">למה אני</div>
+    <h2 class="section-title" data-en>Because I see the full picture.</h2>
+    <h2 class="section-title" data-he style="display:none">כי אני רואה את התמונה המלאה.</h2>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-dot"></div>
+        <div class="why-text">
+          <strong data-en>Full fluency in Hebrew & English</strong>
+          <strong data-he style="display:none">עבודה מלאה בעברית ובאנגלית — ברמת שפת אם</strong>
+          <p data-en>Rare combination. I operate fluently in both business cultures.</p>
+          <p data-he style="display:none">שילוב נדיר. אני פועלת בצורה שוטפת בשתי התרבויות העסקיות.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-dot"></div>
+        <div class="why-text">
+          <strong data-en>Strategy grounded in day-to-day business reality</strong>
+          <strong data-he style="display:none">אסטרטגיה שמחוברת למה שקורה בעסק ביום־יום</strong>
+          <p data-en>My recommendations are grounded in real numbers, not theory.</p>
+          <p data-he style="display:none">ההמלצות שלי מבוססות על מספרים אמיתיים, לא תיאוריה.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-dot"></div>
+        <div class="why-text">
+          <strong data-en>Experience with international capital</strong>
+          <strong data-he style="display:none">ניסיון עם הון בינלאומי</strong>
+          <p data-en>I know how senior stakeholders and investors think and communicate.</p>
+          <p data-he style="display:none">אני יודעת איך בכירים ומשקיעים חושבים ומתקשרים.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-dot"></div>
+        <div class="why-text">
+          <strong data-en>You get me — not a junior analyst</strong>
+          <strong data-he style="display:none">אתה מקבל אותי — לא אנליסט זוטר</strong>
+          <p data-en>Direct, loyal, and fully committed to your business success.</p>
+          <p data-he style="display:none">ישירה, נאמנה ומחויבת לחלוטין להצלחת העסק שלך.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="why-image">
+    <div class="why-img-box">
+      <img src="photo.png" alt="Inbal Kamer">
+    </div>
+    <div class="why-badge">
+      <p data-en>Tel Aviv based, Global reach</p>
+      <p data-he style="display:none">תל אביב. השפעה גלובלית.</p>
+    </div>
+  </div>
+</section>
+<section class="languages">
+  <div class="lang-item">
+    <div class="lang-flag">🇺🇸</div>
+    <div class="lang-name">English</div>
+    <div class="lang-sub">Native Level</div>
+  </div>
+  <div class="lang-divider"></div>
+  <div class="lang-item">
+    <div class="lang-flag">🇮🇱</div>
+    <div class="lang-name">עברית</div>
+    <div class="lang-sub">שפת אם</div>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div class="section-label" data-en>Get In Touch</div>
+  <div class="section-label" data-he style="display:none">צור קשר</div>
+  <h2 class="contact-title" data-en>Ready to bring order to your business?</h2>
+  <h2 class="contact-title" data-he style="display:none">מוכנים להביא סדר לעסק שלכם?</h2>
+  <p class="contact-sub" data-en>Whether you're a startup, SMB, or foreign company entering Israel —<br>let's start with a conversation.</p>
+  <p class="contact-sub" data-he style="display:none">בין אם אתם סטארטאפ, עסק קטן-בינוני, או חברה זרה הנכנסת לישראל —<br>בואו נתחיל בשיחה.</p>
+  <div class="contact-btns">
+    <a href="mailto:inbal.kamer@gmail.com" class="btn-primary" data-en>Send an Email</a>
+    <a href="mailto:inbal.kamer@gmail.com" class="btn-primary" data-he style="display:none">שלחו מייל</a>
+    <a href="https://wa.me/972502344483" class="btn-wa" target="_blank">
+      <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo"><img src="logo.png" alt="Inbal Kamer"></div>
+  <p>© 2025 inbalkamer.com · Tel Aviv, Israel</p>
+</footer>
+<script>
+function setLang(lang){
+  document.body.className=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent===lang.toUpperCase());
+  });
+}
+</script>
+</body>
+</html>
